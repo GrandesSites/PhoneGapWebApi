@@ -24,9 +24,10 @@ namespace WebApi
             // For more information, refer to: http://www.asp.net/web-api
             config.EnableSystemDiagnosticsTracing();
 
-            var json = config.Formatters.JsonFormatter;
-            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
+            //var json = config.Formatters.JsonFormatter;
+            //json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            //config.Formatters.Remove(config.Formatters.XmlFormatter);
 
 
         }

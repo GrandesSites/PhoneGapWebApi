@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Web.Helpers;
 using System.Web.Http;
@@ -16,14 +15,24 @@ namespace WebApi.Controllers
     {
 
 
-        public string Get()
+        public TB_Login Get()
         {
             var _Banco = new TB_LoginRepository();
-            var saida = _Banco.GetAll().ToList();
-            return Json.Encode(saida);
+            var saida = _Banco.GetAll().FirstOrDefault();
+            //return Json.Encode(saida);
+            return saida;
         }
 
+        public bool Get(string DS_Login, string DS_Senha)
+        {
+            var _Banco = new TB_LoginRepository();
+            return _Banco.Login(DS_Login, DS_Senha);
 
+        }
 
+        public void Post([FromBody]string DS_Login)
+        {
+        }
+        
     }
 }
