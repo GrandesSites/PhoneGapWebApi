@@ -17,11 +17,15 @@ namespace WebApi.Domain.Models.Mapping
             this.Property(t => t.DS_Senha)
                 .HasMaxLength(255);
 
+            this.Property(t => t.DS_Nome)
+                .HasMaxLength(255);
+
             // Table & Column Mappings
             this.ToTable("TB_Login");
             this.Property(t => t.ID_login).HasColumnName("ID_login");
             this.Property(t => t.DS_Login).HasColumnName("DS_Login");
             this.Property(t => t.DS_Senha).HasColumnName("DS_Senha");
+            this.Property(t => t.DS_Nome).HasColumnName("DS_Nome");
             this.Property(t => t.Bit_Aluno).HasColumnName("Bit_Aluno");
             this.Property(t => t.Bit_Professor).HasColumnName("Bit_Professor");
         }

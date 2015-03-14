@@ -72,11 +72,13 @@
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\TB_ExercicioMap.cs" />
     <Compile Include="Models\Mapping\TB_LoginMap.cs" />
+    <Compile Include="Models\Mapping\TB_RelacionamentoMap.cs" />
     <Compile Include="Models\Mapping\TB_SeriesMap.cs" />
     <Compile Include="Models\Mapping\TB_SetsMap.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TB_Exercicio.cs" />
     <Compile Include="Models\TB_Login.cs" />
+    <Compile Include="Models\TB_Relacionamento.cs" />
     <Compile Include="Models\TB_Series.cs" />
     <Compile Include="Models\TB_Sets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

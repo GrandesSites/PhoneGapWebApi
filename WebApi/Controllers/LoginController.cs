@@ -26,13 +26,26 @@ namespace WebApi.Controllers
 
 
         [System.Web.Http.HttpPost]
-        public bool Post(JObject model)
+        public string Post(JObject model)
         {
             dynamic json = model;
             string DS_Login = json.DS_Login;
             string DS_Senha = json.DS_Senha;
+            string DS_Nome = json.DS_Nome;
             var _Banco = new TB_LoginRepository();
-            return _Banco.Login(DS_Login, DS_Senha);
+            var retorno = _Banco.Login(DS_Login, DS_Senha);
+            //nao consegui recuperar o objeto numa funcao que vem json e volta xml, entao vou tranformar numa string e la eu dou um split
+
+            var msg = "";
+            if (retorno.Bit_Aluno == null)
+            {
+                msg = "Login ou senha incorretos";
+            }
+            else
+            {
+                msg = "Bem vindo(a) " + retorno.DS_Nome;
+            }
+            return retorno.ID_login.ToString() + "," + retorno.Bit_Aluno.ToString() +"," + msg;
         }
 
 
