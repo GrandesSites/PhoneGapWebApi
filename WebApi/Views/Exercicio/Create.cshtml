@@ -1,0 +1,38 @@
+﻿@model WebApi.Domain.Models.TB_Exercicios
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Internas.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Edição de tipos de exercicios</legend>
+
+
+
+        <div class="editor-label">
+            Descrição do exercicio
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DS_EXERCICIO, null, new { required = "required" })
+        </div>
+
+        <div class="editor-label">
+            Id do YouTube
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID_YOUTUBE)
+        </div>
+        @Html.HiddenFor(X=>X.ST_STATUS,new {value = 1})
+        <p>
+            <input type="submit" value="Inserir" />
+        </p>
+    </fieldset>
+}
+

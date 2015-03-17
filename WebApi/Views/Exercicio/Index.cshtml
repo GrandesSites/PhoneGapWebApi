@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApi.Domain.Models.TB_Exercicios>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Internas.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Id do Youtube
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DS_EXERCICIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_YOUTUBE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ST_STATUS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ID_EXERCICIO  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_EXERCICIO })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,214 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>KMC</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/font-awesome/css/font-awesome.min.css">
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+
+    <!-- JavaScript -->
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+
+    <script src="~/Scripts/MeusEstilos.js"></script>
+
+    <link href=@Url.Content("~/css/MeusEstilos.css") rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Admin/logado">Admistração</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li><a href="~/Logado/"><i class="fa fa-dashboard"></i> Inicial</a></li>
+
+                    @{
+                        if (WebSession.SessionControlers != null)
+                        {
+                            var pags = 0;
+                            foreach (var item in WebSession.SessionControlers)
+                            {
+                                switch (item.CONTROLLER)
+                                {
+                                    case "Humor":
+                                        <li><a href="~/Humor/"><i class="fa fa-table"></i> Representantes</a></li>
+                                        pags ++;
+                                        break;
+                                    case "Usuarios":
+                                        <li><a href="~/Usuarios/"><i class="fa fa-table"></i> Usuarios / Direitos</a></li>
+                                        pags ++;
+                                        break;
+                                    case "Origens":
+                                        <li><a href="~/Origens/"><i class="fa fa-table"></i> Campanha</a></li>
+                                        pags ++;
+                                        break;
+                                    case "Clientes":
+                                        <li><a href="~/Clientes/"><i class="fa fa-table"></i> Clientes</a></li>
+                                        pags++;
+                                        break;
+                                    case "Relatorios":
+                                    <li><a href="~/Relatorios/"><i class="fa fa-table"></i> Relatorios</a></li>
+                                        pags++;
+                                        break;
+                                    case "Empresa":
+                                    <li><a href="~/Empresa/"><i class="fa fa-table"></i> Cadastro de empresa</a></li>
+                                        pags++;
+                                        break;
+                                }
+                            }
+                            if (pags == 0)
+                            {
+                                Response.RedirectToRoute("Home");
+                            }
+                        }
+}
+
+                    <!--
+                        <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+                        <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
+                        -->
+                </ul>
+
+                <!--
+                    <ul class="nav navbar-nav navbar-right navbar-user">
+                        <li class="dropdown messages-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">7 New Messages</li>
+                                <li class="message-preview">
+                                    <a href="#">
+                                        <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                                        <span class="name">John Smith:</span>
+                                        <span class="message">Hey there, I wanted to ask you something...</span>
+                                        <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                                    </a>
+                                </li>
+                                        <li class="divider"></li>
+                                        <li class="message-preview">
+                                            <a href="#">
+                                                <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                                                <span class="name">John Smith:</span>
+                                                <span class="message">Hey there, I wanted to ask you something...</span>
+                                                <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="message-preview">
+                                            <a href="#">
+                                                <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                                                <span class="name">John Smith:</span>
+                                                <span class="message">Hey there, I wanted to ask you something...</span>
+                                                <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">View Inbox <span class="badge">7</span></a></li>
+                                    </ul>
+                                </li>
+                                    <li class="dropdown alerts-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Default <span class="label label-default">Default</span></a></li>
+                                            <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
+                                            <li><a href="#">Success <span class="label label-success">Success</span></a></li>
+                                            <li><a href="#">Info <span class="label label-info">Info</span></a></li>
+                                            <li><a href="#">Warning <span class="label label-warning">Warning</span></a></li>
+                                            <li><a href="#">Danger <span class="label label-danger">Danger</span></a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">View All</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown user-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                                            <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+                                        </ul>
+                                    </li>
+                    </ul>
+
+                    -->
+
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+            @{
+                if (TempData["sucesso"] != null)
+                {
+                    <div>
+                        <br />
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                            <strong>@TempData["sucesso"]</strong>
+                        </div>
+                    </div>
+                }
+                if (TempData["erro"] != null)
+                {
+                    <div>
+                        <br />
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                            <strong>@TempData["erro"]</strong>
+                        </div>
+                    </div>
+                }
+            }
+            @RenderBody()
+        </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+    <!-- Page Specific Plugins -->
+
+    
+    <script src="~/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="~/js/tablesorter/tables.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

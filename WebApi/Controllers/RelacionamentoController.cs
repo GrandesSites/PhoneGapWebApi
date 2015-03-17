@@ -38,7 +38,7 @@ namespace WebApi.Controllers
             if (APROVADO == 0 && REPROVADO == 0) //se for so um convite essas duas variaveis serao 0
             {
                 retorno = _Banco.ConvidaProfessor(ID_REQUISITANTE, ID_REQUISITADO);
-                msg = retorno ? "Convite enviado com sucesso" : "C convite nao pod ser enviado nesse momento, tente novamente mais tarde";
+                msg = retorno ? "Convite enviado com sucesso" : "O convite nao pode ser enviado nesse momento, tente novamente mais tarde";
             }
             else
             {
