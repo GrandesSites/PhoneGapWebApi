@@ -17,8 +17,11 @@ namespace WebApi.Domain.Models
         }
 
         public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<TB_CONVERSAS> TB_CONVERSAS { get; set; }
         public DbSet<TB_Exercicios> TB_Exercicios { get; set; }
         public DbSet<TB_Login> TB_Login { get; set; }
+        public DbSet<TB_NomesPersonalizados> TB_NomesPersonalizados { get; set; }
+        public DbSet<TB_Personalizacao> TB_Personalizacao { get; set; }
         public DbSet<TB_Relacionamento> TB_Relacionamento { get; set; }
         public DbSet<TB_Series> TB_Series { get; set; }
         public DbSet<TB_Sets> TB_Sets { get; set; }
@@ -26,8 +29,11 @@ namespace WebApi.Domain.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new sysdiagramMap());
+            modelBuilder.Configurations.Add(new TB_CONVERSASMap());
             modelBuilder.Configurations.Add(new TB_ExerciciosMap());
             modelBuilder.Configurations.Add(new TB_LoginMap());
+            modelBuilder.Configurations.Add(new TB_NomesPersonalizadosMap());
+            modelBuilder.Configurations.Add(new TB_PersonalizacaoMap());
             modelBuilder.Configurations.Add(new TB_RelacionamentoMap());
             modelBuilder.Configurations.Add(new TB_SeriesMap());
             modelBuilder.Configurations.Add(new TB_SetsMap());

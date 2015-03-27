@@ -37,8 +37,9 @@ namespace WebApiRepository
         public void Remove(TEntity obj)
         {
             Db.Database.Log = (s) => System.Diagnostics.Debug.Write(s);
-            Db.Set<TEntity>().Remove(obj);
+            Db.Entry(obj).State = EntityState.Deleted;
             Db.SaveChanges();
+
         }
         public void Dispose()
         {

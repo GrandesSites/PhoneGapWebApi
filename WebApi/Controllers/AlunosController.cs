@@ -11,10 +11,11 @@ namespace WebApi.Controllers
 {
     public class AlunosController : ApiController
     {
-        public IEnumerable<TB_Login> Get(int id)
+        public IEnumerable<TB_Login> Get(int id, int? Aprovado)
         {
             var saida = new TB_RelacionamentoRepository();
-            return saida.ListaAlunos(id);
+            return saida.ListaAlunos(id, Aprovado);
         }
+
     }
 }

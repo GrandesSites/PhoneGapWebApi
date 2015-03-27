@@ -11,9 +11,6 @@ namespace WebApi.Domain.Models.Mapping
             this.HasKey(t => t.ID_EXERCICIO);
 
             // Properties
-            this.Property(t => t.ID_EXERCICIO)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.DS_EXERCICIO)
                 .HasMaxLength(255);
 

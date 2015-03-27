@@ -8,24 +8,19 @@ namespace WebApi.Domain.Models.Mapping
         public TB_SeriesMap()
         {
             // Primary Key
-            this.HasKey(t => t.ID_Serie);
+            this.HasKey(t => t.ID_Serio);
 
             // Properties
-            this.Property(t => t.DS_Serie)
-                .HasMaxLength(255);
+            this.Property(t => t.NR_Peso)
+                .HasMaxLength(50);
 
             // Table & Column Mappings
             this.ToTable("TB_Series");
-            this.Property(t => t.ID_Serie).HasColumnName("ID_Serie");
-            this.Property(t => t.ID_Set).HasColumnName("ID_Set");
-            this.Property(t => t.DS_Serie).HasColumnName("DS_Serie");
-            this.Property(t => t.ST_ATIVO).HasColumnName("ST_ATIVO");
-
-            // Relationships
-            this.HasOptional(t => t.TB_Sets)
-                .WithMany(t => t.TB_Series)
-                .HasForeignKey(d => d.ID_Set);
-
+            this.Property(t => t.ID_Serio).HasColumnName("ID_Serio");
+            this.Property(t => t.ID_EXERCICIO).HasColumnName("ID_EXERCICIO");
+            this.Property(t => t.DT_Data).HasColumnName("DT_Data");
+            this.Property(t => t.NR_Repeticoes).HasColumnName("NR_Repeticoes");
+            this.Property(t => t.NR_Peso).HasColumnName("NR_Peso");
         }
     }
 }

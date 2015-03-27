@@ -70,14 +70,20 @@
   <ItemGroup>
     <Compile Include="Models\DB_9BB59F_siteContext.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TB_CONVERSASMap.cs" />
     <Compile Include="Models\Mapping\TB_ExerciciosMap.cs" />
     <Compile Include="Models\Mapping\TB_LoginMap.cs" />
+    <Compile Include="Models\Mapping\TB_NomesPersonalizadosMap.cs" />
+    <Compile Include="Models\Mapping\TB_PersonalizacaoMap.cs" />
     <Compile Include="Models\Mapping\TB_RelacionamentoMap.cs" />
     <Compile Include="Models\Mapping\TB_SeriesMap.cs" />
     <Compile Include="Models\Mapping\TB_SetsMap.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\TB_CONVERSAS.cs" />
     <Compile Include="Models\TB_Exercicios.cs" />
     <Compile Include="Models\TB_Login.cs" />
+    <Compile Include="Models\TB_NomesPersonalizados.cs" />
+    <Compile Include="Models\TB_Personalizacao.cs" />
     <Compile Include="Models\TB_Relacionamento.cs" />
     <Compile Include="Models\TB_Series.cs" />
     <Compile Include="Models\TB_Sets.cs" />
@@ -85,12 +91,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

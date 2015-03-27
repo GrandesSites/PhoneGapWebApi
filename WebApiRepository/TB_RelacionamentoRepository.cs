@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApi.Domain.Models;
@@ -35,41 +36,36 @@ namespace WebApiRepository
 
         public bool AlteraAluno(int ID_REQUISITANTE, int ID_REQUISITADO, int APROVADO, int REPROVADO)
         {
-            try
-            {
-                var db = new DB_9BB59F_siteContext();
+
+                //var db = new DB_9BB59F_siteContext();
                 var Model = new TB_Relacionamento();
                 var _Banco = new TB_RelacionamentoRepository();
-                Model =
-                    db.TB_Relacionamento.FirstOrDefault(
-                        X => X.ID_REQUISITANTE == ID_REQUISITANTE && X.ID_REQUISITADO == ID_REQUISITADO);
-                Model.BIT_APROVADO = APROVADO;
-                Model.BIT_REPROVADO = REPROVADO;
+                Model = Db.TB_Relacionamento.FirstOrDefault(X => X.ID_REQUISITANTE == ID_REQUISITANTE && X.ID_REQUISITADO == ID_REQUISITADO);
+
                 if (REPROVADO == 0)
                 {
                     //para a logica funcionar mais facil e melhor deletar o pedido de professor
-                    _Banco.Remove(Model);
+                    Model.BIT_APROVADO = APROVADO;
+                    Model.BIT_REPROVADO = REPROVADO;
+                    _Banco.Update(Model);
                 }
                 else
                 {
-                    _Banco.Update(Model);
+
+                    _Banco.Remove(Model);
                 }
                 return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+
         }
  
-        public IEnumerable<TB_Login> ListaAlunos(int id)
+        public IEnumerable<TB_Login> ListaAlunos(int id, int? aprovado)
         {
             var db = new DB_9BB59F_siteContext();
-            var Relacionamento =
-                db.TB_Relacionamento.FirstOrDefault(X => X.ID_REQUISITADO == id && X.BIT_APROVADO == null);
-            var saida = db.TB_Login.Where(X => X.ID_login == Relacionamento.ID_REQUISITANTE).ToList();
-            return saida;
+            var Relacionamento = db.TB_Relacionamento.Where(X => X.ID_REQUISITADO == id && X.BIT_APROVADO == aprovado).ToList();
+            return Relacionamento.Select(item => db.TB_Login.FirstOrDefault(X => X.ID_login == item.ID_REQUISITANTE)).ToList();
         }
+
+
 
         public bool ListaProfessores(int id)
         {

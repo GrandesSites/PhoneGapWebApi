@@ -20,8 +20,6 @@ namespace WebApi.Controllers
             return retorno;
         }
 
-
-
         [HttpPost]
         public string Post(JObject model)
         {
@@ -42,8 +40,17 @@ namespace WebApi.Controllers
             }
             else
             {
-                retorno = _Banco.AlteraAluno(ID_REQUISITANTE, ID_REQUISITADO, APROVADO, REPROVADO);
-                msg = retorno ? "Status alterado com sucesso" : "O Status não pode ser alterado nesse momento, tente novamente mais tarde";
+                try
+                {
+                    _Banco.AlteraAluno(ID_REQUISITANTE, ID_REQUISITADO, APROVADO, REPROVADO);
+                    msg =  "Status alterado com sucesso"; 
+
+                }
+                catch (Exception ex)
+                {
+                    
+                    msg = ex.InnerException.Message;
+                }
             }
             return msg;
         }

@@ -325,7 +325,9 @@
     <Content Include="font-awesome\scss\_spinning.scss" />
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
+    <Content Include="WebApi.publish.xml" />
     <None Include="Properties\PublishProfiles\OffLine.pubxml" />
+    <None Include="Properties\PublishProfiles\WebPublish.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\flot\excanvas.js" />

@@ -8,6 +8,6 @@ namespace WebApi.Domain.Models
         public int ID_EXERCICIO { get; set; }
         public string DS_EXERCICIO { get; set; }
         public string ID_YOUTUBE { get; set; }
-        public int ST_STATUS { get; set; }
+        public Nullable<int> ST_STATUS { get; set; }
     }
 }
